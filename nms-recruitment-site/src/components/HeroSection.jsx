@@ -2,7 +2,7 @@ import heroSectionImage from "../assets/img/hero-section-banner.jpg";
 import Button from "./Button";
 const HeroSection = () => {
     return (
-        <div className="relative bg-cover bg-center h-[720px] text-"
+        <div className="relative bg-cover bg-center h-[720px]"
         style={{ backgroundImage: `url(${heroSectionImage})`}} >
             <div className="absolute bg-[#000000] opacity-45 h-full w-full"></div>
             <div className="absolute h-full w-full text-custom-content-color flex items-center justify-center flex-col">
