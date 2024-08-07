@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      'custom-red' : '#C51D26',
+      'custom-background' : '#f7f7f7',
+      'custom-content-color' : '#ffffff',
+      'custom-container' : "#ffffff"
+    },
+    extend: {
+      
+    },
   },
   plugins: [
     require('daisyui'),
