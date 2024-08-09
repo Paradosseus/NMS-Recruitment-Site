@@ -11,7 +11,7 @@ const HeroSection = () => {
             <div className="absolute h-full w-full text-custom-content-color flex items-center justify-center flex-col">
                     <h1 className="text-[56px] font-bold">Find the Job that Fits your Lifestyle</h1>
                     <p className="text-xl mb-[18px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna  est, <br/>pharetra accumsan convallis ac, finibus vitae elit. In interdum  porttitor mi.</p>
-                    <Link to="/#browse-jobs-section"><Button label="Browse Jobs" textSize="text-[24px]"/></Link>
+                    <a href="#browse-jobs-section"><Button label="Browse Jobs" textSize="text-[24px]"/></a>
                 </div>
         </div>
     )

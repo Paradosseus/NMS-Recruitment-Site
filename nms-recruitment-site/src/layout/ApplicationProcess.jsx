@@ -1,19 +1,50 @@
 import { useEffect, useState } from "react"
 import Navbar from "../components/Navbar"
 import Button from "../components/Button"
-
+import { useLocation } from "react-router-dom"
 import {PreScreening} from "../components/child-components/application-process/assessmentSteps/PreScreening.jsx"
-import { AssessmentTitle, AssessmentInstruction } from "../components/child-components/application-process/assessmentSteps/AssessmentTitle.jsx"
+import { AssessmentTitle } from "../components/child-components/application-process/assessmentSteps/AssessmentTitle.jsx"
+import { AssessmentInstruction } from "../components/child-components/application-process/assessmentSteps/AssessmentInstruction.jsx"
+import { GrammarTest } from "../components/child-components/application-process/assessmentSteps/GrammarTest.jsx"
+import {TypingTest} from "../components/child-components/application-process/assessmentSteps/TypingTest.jsx" 
+import { EssayTest } from "../components/child-components/application-process/assessmentSteps/EssayText.jsx"
+import { ApplicationDoneStep } from "../components/child-components/application-process/ApplicationDoneStep.jsx"
+import { BasicInformationStep } from "../components/child-components/application-process/BasicInformationStep.jsx"
+ApplicationDoneStep
 
 export const ApplicationProcess = () => {
 
-const [currentStep, setCurrentStep] = useState(0);
+    const location = useLocation() 
+    const { job } = location.state
+
+    
+const applicationSteps = [BasicInformationStep, AssessmentTitle, AssessmentInstruction, PreScreening, GrammarTest, TypingTest, EssayTest, ApplicationDoneStep]
+
+const [currentApplicationStep, setApplicationCurrentStep] = useState(0);
+const [fade, setFade] = useState(true)
 
 
+const nextStep = () => {
+    setFade(false)
+    setTimeout(() => {
+        setApplicationCurrentStep((curr) => Math.min(curr + 1, applicationSteps.length - 1))
+        setFade(true)
+    }, 500)
+}
+
+const previousStep = () => {
+    setApplicationCurrentStep((curr) => Math.max(curr - 1, 0))
+}
+
+const StepPlaceHolder = applicationSteps[currentApplicationStep]
 
 useEffect(()=> {
-    // document.getElementById('my_modal_4').showModal()
+     setTimeout(()=> {
+        document.getElementById('my_modal_4').showModal()
+     }, 500)
 },[])
+
+
 
     return(
         <div className="w-full h-screen bg-[#f7f7f7]">
@@ -52,7 +83,6 @@ useEffect(()=> {
                 </div>
                 <div className="modal-action">
                 <form method="dialog" className="m-auto">
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>  
                 <label className=" flex items-center cursor-pointer gap-2 mb-4">
                     <input type="checkbox" className="checkbox"  />
                     <span className="label-text">I accept the terms and agreements specified above</span>
@@ -65,23 +95,27 @@ useEffect(()=> {
             <Navbar/>
 
 
-            <div className="w-[1000px] h-[750px] rounded-lg p-10 m-auto bg-custom-container my-10 border">
+            <div className="w-[1000px] h-[750px] rounded-lg p-10 m-auto bg-custom-container my-10 flex flex-col">
                 <div className="text-center">
                     <ul className="steps w-full text-sm">
-                        <li data-content="" className="step step-primary">Basic Information</li>
-                        <li data-content="" className="step">Assessment</li>
-                        <li data-content="" className="step">Application Form</li>
+                        <li data-content="" className="step step-primary">Application Form</li>
+                        <li data-content="" className={`step ${currentApplicationStep > 0 && 'step-primary'} `}>Assessment</li>
+                        <li data-content="" className={`step ${currentApplicationStep === applicationSteps.length-1 && 'step-primary'} `}>Application Form</li>
                     </ul>
                 </div>
 
                 {/* INSERT CHILD COMPONENT HERE */}
-                <PreScreening   />
-
-                {/* END SECTION HER */}
-
-                <div className="text-center">
-                        <Button label="Next" width="w-[28rem]"/>
+                <div className={`m-auto w-full transition duration-500 ease-in-out transform ${fade ? 'opacity-100' : 'opacity-0'}`}>
+                    <StepPlaceHolder/>
                 </div>
+                
+                {/* END SECTION HER */}
+                {currentApplicationStep !== applicationSteps.length - 1 && (
+                                    <div className="text-center">
+                                    <Button label="Next" width="w-[28rem]" onClick={nextStep}/>
+                            </div>
+                )}
+
             </div>
         </div>
     )

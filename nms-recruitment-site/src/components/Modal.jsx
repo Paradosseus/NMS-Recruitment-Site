@@ -1,8 +1,16 @@
 import { useState } from "react"
 import Button from "./Button"
+import { useNavigate } from "react-router-dom"
 
-export const Modal = () => {
+
+export const Modal = ({job}) => {
     const [termsChecked, setTermsChecked] = useState(false)
+
+    const navigate = useNavigate()
+
+    const navigateToApplication = () => {
+        navigate(`/application/${job.id}`, {state: {job}})
+    }
 
     const handleCheckbox = (event) => {
         setTermsChecked(event.target.checked)
@@ -50,7 +58,7 @@ export const Modal = () => {
                     <input type="checkbox" className="checkbox" onChange={handleCheckbox} />
                     <span className="label-text">I accept the terms and agreements specified above</span>
                 </label>
-                <div className="w-fit m-auto"><Button label="Continue" disabled={!termsChecked}/></div>               
+                <div className="w-fit m-auto"><Button label="Continue" disabled={!termsChecked} onClick={navigateToApplication}/></div>               
                 </form>
                 </div>
             </div>

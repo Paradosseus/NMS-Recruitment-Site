@@ -3,6 +3,9 @@ import Navbar from '../components/Navbar'
 import HeroSection from '../components/HeroSection'
 import SearchBar from '../components/SearchBar'
 import JobCardItem from '../components/JobCardItem'
+import jobs from "../data/jobs"
+
+
 function Home() {
   return (
     <div className='w-full bg-[#f7f7f7]'>
@@ -10,10 +13,11 @@ function Home() {
     <HeroSection/>
     <div className='grid grid-cols-4 grid-rows-[auto,1fr] px-[100px]'>
         <div className='row-span-5 border'>
-          <div className='form-control bg-custom-container rounded-lg p-2 w-40 m-auto sticky top-20'>
-              <h3 className='text-2xl font-semibold mb-4'>Filter</h3>
-              <div className='mb-4'>
-                <h4 className='font-medium mb-2'>Employment Type</h4>
+
+          <div className='form-control bg-custom-container rounded-lg p-2 w-[250px] m-auto sticky top-20 my-10 '>
+              <h3 className='text-3xl font-semibold mb-4 text-center'>Filter</h3>
+              <div className='mb-4 grid gap-2 '>
+                <h4 className='font-medium mb-2 text-xl'>Employment Type</h4>
                 <label className=" flex items-center cursor-pointer gap-2">
                 <input type="checkbox" className="checkbox" />
                 <span className="label-text">Full-Time</span>
@@ -24,7 +28,7 @@ function Home() {
                 </label>
               </div>
               <div>
-                <h4 className='font-medium mb-2'>Work Set-up</h4>
+                <h4 className='font-medium mb-2 text-xl'>Work Set-up</h4>
                 <label className=" flex items-center cursor-pointer gap-2">
                 <input type="checkbox" className="checkbox" />
                 <span className="label-text">Hybrid</span>
@@ -48,15 +52,11 @@ function Home() {
         </div>
         <div className='col-span-3'>
           <div className='grid grid-cols-3 gap-4'>
-            <JobCardItem/> 
-            <JobCardItem/> 
-            <JobCardItem/> 
-            <JobCardItem/> 
-            <JobCardItem/> 
-            <JobCardItem/> 
-            <JobCardItem/> 
-            <JobCardItem/> 
-            <JobCardItem/> 
+            {jobs.map((job, index) => {
+              return (
+                <JobCardItem job={job} key={index}/>
+              )
+            })}
           </div>
         </div>
     </div>
