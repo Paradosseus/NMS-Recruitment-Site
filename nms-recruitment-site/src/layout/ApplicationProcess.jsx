@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import Navbar from "../components/Navbar"
-import Button from "../components/Button"
+import Navbar from "../components/Navbar.jsx"
+import Button from "../components/Button.jsx"
 import { useLocation } from "react-router-dom"
 import {PreScreening} from "../components/child-components/application-process/assessmentSteps/PreScreening.jsx"
 import { AssessmentTitle } from "../components/child-components/application-process/assessmentSteps/AssessmentTitle.jsx"

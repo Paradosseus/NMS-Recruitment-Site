@@ -2,7 +2,8 @@ import Navbar from "../components/Navbar"
 import Button from "../components/Button"
 
 export const Register = () => {
-    <div className="w-full h-screen bg-[#f7f7f7]">
+    return (
+        <div className="w-full h-screen bg-[#f7f7f7]">
         <Navbar/>
         <div className="w-[1000px] h-[750px] rounded-lg p-10 m-auto bg-custom-container my-10 flex flex-col justify-center items-center">
         <div className="w-[450px] grid gap-2">
@@ -39,4 +40,6 @@ export const Register = () => {
 
         </div>
     </div>
+
+    )
 }
