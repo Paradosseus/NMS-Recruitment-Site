@@ -95,12 +95,12 @@ useEffect(()=> {
             <Navbar/>
 
 
-            <div className="w-[1000px] h-[750px] rounded-lg p-10 m-auto bg-custom-container my-10 flex flex-col">
+            <div className="w-[1000px] h-[750px] rounded-lg p-10 m-auto bg-custom-container my-10 flex flex-col shadow-lg">
                 <div className="text-center">
                     <ul className="steps w-full text-sm">
                         <li data-content="" className="step step-primary">Application Form</li>
                         <li data-content="" className={`step ${currentApplicationStep > 0 && 'step-primary'} `}>Assessment</li>
-                        <li data-content="" className={`step ${currentApplicationStep === applicationSteps.length-1 && 'step-primary'} `}>Application Form</li>
+                        <li data-content="" className={`step ${currentApplicationStep === applicationSteps.length-1 && 'step-primary'} `}>Done</li>
                     </ul>
                 </div>
 

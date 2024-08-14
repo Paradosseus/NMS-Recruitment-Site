@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "./Button";
 
 
@@ -6,9 +6,9 @@ import Button from "./Button";
 const JobCardItem = ({job}) => {
 
     const navigate = useNavigate();
-
-    const navigateToJobDetails =() => {
-        navigate(`/job/${job.id}`, {state: {job}})
+    const location = useLocation();
+    const navigateToJobDetails = () => {
+        navigate(`/job/${job.id}`, { state: { job, from: location.pathname } });
     }
 
     return (

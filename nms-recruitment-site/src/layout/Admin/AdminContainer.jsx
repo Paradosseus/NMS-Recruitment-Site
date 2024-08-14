@@ -1,6 +1,5 @@
 import companyLogo from "../../assets/img/Logo-admin.png"
 import avatar from "../../assets/img/avatar.png"
-
 import { MdOutlineDashboard } from "react-icons/md";
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import { MdOutlineCases } from "react-icons/md";
@@ -12,7 +11,13 @@ import { MdOutlineLogout } from "react-icons/md";
 import { MdOutlineNotifications } from "react-icons/md";
 import { Dashboard } from "../../components/child-components/admin/Dashboard"
 import { Applicants } from "../../components/child-components/admin/Applicants";
+import { useState } from "react";
+
+
 export const AdminContainer = () => {
+
+    const [activeOption, setActiveOption] = useState("Dashboard");
+    
     return (
         <div className="h-screen w-screen grid grid-cols-[auto,1fr] bg-custom-background">
             <div className="bg-custom-container">
@@ -24,25 +29,35 @@ export const AdminContainer = () => {
                         <div>
                             <h2 className="text-xl text-custom-red font-semibold">MAIN MENU</h2>
                             <ul className="font-medium text text-lg grid gap-1">
-                                <li className="flex items-center gap-2">
+                                <li className={`flex items-center gap-2 ${activeOption === "Dashboard" ? "text-custom-red" : ""}`} onClick={(e) => {
+                                    setActiveOption("Dashboard")
+                                }}>
                                     <MdOutlineDashboard className="inline-block"/>
-                                    <a href="">Dashboard</a>
+                                    <button href="">Dashboard</button>
                                 </li>
-                                <li className="flex items-center gap-2">
+                                <li className={`flex items-center gap-2 ${activeOption === "Applicants" ? "text-custom-red" : ""}`} onClick={(e) => {
+                                    setActiveOption("Applicants")
+                                }}>
                                     <MdOutlineLibraryBooks className="inline-block"/>
-                                    <a href="">Applicants</a>
+                                    <button href="">Applicants</button>
                                 </li>
-                                <li className="flex items-center gap-2">
+                                <li className={`flex items-center gap-2 ${activeOption === "Jobs" ? "text-custom-red" : ""}`} onClick={(e) => {
+                                    setActiveOption("Jobs")
+                                }}>
                                     <MdOutlineCases className="inline-block"/>
-                                    <a href="">Jobs</a>
+                                    <button href="">Jobs</button>
                                 </li>
-                                <li className="flex items-center gap-2">
+                                <li className={`flex items-center gap-2 ${activeOption === "Calendar" ? "text-custom-red" : ""}`} onClick={(e) => {
+                                    setActiveOption("Calendar")
+                                }}>
                                     <MdOutlineCalendarMonth className="inline-block"/>
-                                    <a href="">Calendar</a>
+                                    <button href="">Calendar</button>
                                 </li>
-                                <li className="flex items-center gap-2">
+                                <li className={`flex items-center gap-2 ${activeOption === "Studio Accounts" ? "text-custom-red" : ""}`} onClick={(e) => {
+                                    setActiveOption("Studio Accounts")
+                                }}>
                                     <MdOutlineGroups className="inline-block"/>
-                                    <a href="">Studio Accounts</a>
+                                    <button href="">Studio Accounts</button>
                                 </li>
                             </ul>
                         </div>
@@ -51,11 +66,13 @@ export const AdminContainer = () => {
                             <ul className="font-medium text text-lg grid gap-1">
                                 <li className="flex items-center gap-2">
                                     <MdOutlineHelpCenter className="inline-block"/>
-                                    <a href="">Help Center</a>
+                                    <button href="">Help Center</button>
                                 </li>
-                                <li className="flex items-center gap-2">
+                                <li className={`flex items-center gap-2 ${activeOption === "Settings" ? "text-custom-red" : ""}`} onClick={(e) => {
+                                    setActiveOption("Settings")
+                                }}>
                                     <MdOutlineSettings className="inline-block"/>
-                                    <a href="">Settings</a>
+                                    <button href="">Settings</button>
                                 </li>
                             </ul>
                         </div>
@@ -63,7 +80,7 @@ export const AdminContainer = () => {
                             <ul className="font-medium text text-lg">
                                 <li className="flex items-center gap-2">
                                     <MdOutlineLogout className="inline-block"/>
-                                    <a href="">Logout</a>
+                                    <a onClick="">Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -100,8 +117,8 @@ export const AdminContainer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row-span-3">
-                <Applicants/>
+                <div className="row-span-3 p-4">
+                {activeOption === "Dashboard" ? <Dashboard/> : activeOption === "Applicants" ? <Applicants/> : ""}
                 </div>
             </div>
 

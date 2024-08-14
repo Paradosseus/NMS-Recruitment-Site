@@ -2,7 +2,8 @@ import Button from "./Button";
 
 const SearchBar = () => {
     return (
-            <label className="input input-bordered flex items-center gap-4 py-8">
+        <div className="flex gap-2 items-center">
+            <label className="input input-bordered flex items-center gap-4 py-6">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -14,8 +15,10 @@ const SearchBar = () => {
                 clipRule="evenodd" />
             </svg>
             <input type="text" className="grow text-xl" placeholder="Search Jobs" />
-            <Button label="Search"/>
+            
             </label>
+            <Button label="Search"/>
+        </div>
     )
 }
 

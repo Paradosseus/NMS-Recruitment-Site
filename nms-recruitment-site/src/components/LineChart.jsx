@@ -39,10 +39,10 @@ const LineChart = () => {
     },
     layout: {
       padding: {
-        left: 10,
-        right: 10,
-        top: 10,
-        bottom: 10,
+        left: 5,
+        right: 5,
+        top: 5,
+        bottom: 5,
       },
     },
   };

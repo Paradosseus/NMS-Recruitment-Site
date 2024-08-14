@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import Button from "./Button"
 export const Filter = () => {
     const [currentRange, setCurrentRange] = useState(16000)
 
@@ -8,7 +8,7 @@ export const Filter = () => {
     }
 
     return (
-        <div className='form-control bg-custom-container rounded-lg p-6 w-[250px] m-auto sticky top-20 my-10 '>
+        <div className='form-control bg-custom-container rounded-lg p-6 w-[250px] m-auto sticky top-20 my-10 drop-shadow-md'>
             <h3 className='text-2xl font-semibold mb-4'>Filter</h3>
             <div className='mb-4 grid gap-2 '>
             <h4 className='font-semibold mb-2 text-xl'>Employment Type</h4>
@@ -21,8 +21,8 @@ export const Filter = () => {
                 <span className="label-text">Part-Time</span>
             </label>
             </div>
-            <div>
-            <h4 className='font-semibold mb-2 text-xl'>Work Set-up</h4>
+            <h3 className='font-semibold mb-2 text-xl'>Work Set-up</h3>
+            <div className="mb-4 grid gap-2">
             <label className=" flex items-center cursor-pointer gap-2">
             <input type="checkbox" className="checkbox" />
             <span className="label-text">Hybrid</span>
@@ -50,7 +50,13 @@ export const Filter = () => {
                 onChange={handleRange}
                 className="range range-primary"
                 />
+                <div>
+                    <div className="mt-4">
+                        <Button label="Apply" width="w-full"/>
+                    </div>
+                </div>
         </div>
+        
     </div>
     )
 }

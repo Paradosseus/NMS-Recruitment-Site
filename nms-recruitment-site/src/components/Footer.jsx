@@ -2,28 +2,24 @@ import Logo from "../assets/img/Logo.png"
 
 export const Footer = () => {
     return (
-        <footer className="footer  text-base-content p-10 bg-[#ffffff]">
+        <footer className="footer  text-base-content py-10 bg-[#ffffff] px-[150px]">
             <aside>
                 <img src={Logo} alt="" className="max-w-64"/>
                 <p>
-                New Media Services
-                <br />
-                Providing reliable tech since 1992
+                <strong>New Media Services Philippines  </strong>, we fearlessly pursue greatness.<br/>We value the input of every team member, allowing them to shape<br/>our business and deliver top-notch quality work and services for you
                 </p>
             </aside>
             <nav>
-                <h6 className="footer-title">Services</h6>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
+                <h6 className="footer-title">Quick Links</h6>
+                <a className="link link-hover">Home</a>
+                <a className="link link-hover">About us</a>
+                <a className="link link-hover">Browse Jobs</a>
+                <a className="link link-hover">Account</a>  
+
             </nav>
             <nav>
-                <h6 className="footer-title">Company</h6>
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
+                <h6 className="footer-title">Support</h6>
+                <a className="link link-hover">Contact us</a>
             </nav>
             <nav>
                 <h6 className="footer-title">Legal</h6>
